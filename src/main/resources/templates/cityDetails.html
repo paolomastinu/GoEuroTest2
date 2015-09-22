@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>GoEuro</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- JQuery -->
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css" />
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="panel panel-primary">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Results</h3>
+		  </div>
+		  <div class="panel-body">
+		  	<div class="panel  panel-info" th:each="information : ${informations}">
+			  <div class="panel-heading" th:switch="${information.type}">
+			  	<span th:case="'location'" class="glyphicon glyphicon-flag" aria-hidden="true"> <h3 class="panel-title" th:text="${information.name}"></h3></span> 
+				<span th:case="'airport'" class="glyphicon glyphicon-plane" aria-hidden="true"> <h3 class="panel-title" th:text="${information.name}"></h3></span> 
+				<span th:case="'station'" class="glyphicon glyphicon-road" aria-hidden="true"> <h3 class="panel-title" th:text="${information.name}"></h3></span> 
+			  </div>
+			  <div class="panel-body">
+			  	<div class="row">
+				  <div class="col-md-2">Id: </div>
+				  <div class="col-md-10" th:text="${information._id}"></div>
+				</div>
+			    <div class="row">
+				  <div class="col-md-2">Name: </div>
+				  <div class="col-md-10" th:text="${information.name}"></div>
+				</div>
+				<div class="row">
+				  <div class="col-md-2">Type: </div>
+				  <div class="col-md-10" th:text="${information.type}"></div>
+				</div>
+				<div class="row">
+				  <div class="col-md-2">Latitude: </div>
+				  <div class="col-md-10" th:text="${information.geo_position.latitude}"></div>
+				</div>
+				<div class="row">
+				  <div class="col-md-2">Longitude: </div>
+				  <div class="col-md-10" th:text="${information.geo_position.longitude}"></div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+    </div>
+</body>
+</html>
